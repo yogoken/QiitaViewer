@@ -22,10 +22,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource {
         table.dataSource = self
         getArticles()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     func getArticles() {
         Alamofire.request("https://qiita.com/api/v2/items")
@@ -52,12 +48,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         let article = articles[indexPath.row]
         cell.textLabel?.text = article["title"]!
